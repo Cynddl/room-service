@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2>Réservation de salle à l’ENS de Lyon</h2>
+
+	<form>
+
+    <section>
+      <p>Je souhaite réserver une salle le <input type="text" class="datepicker" required> de <input class="timepicker" type="text" required> à <input class="timepicker" type="text" required></p>
+      <p>sur le site <select><option value="descartes">Descartes</option><option value="monod">Monod</option></select>, au nom de <input type="text" placeholder="association/individu" required> pour<input type="text" placeholder="une réunion, un club…" required>.
+    </p>
+    </section>
+
+    <section>
+      <label>Récurrence</label>
+      <div class="choice-bar">
+        <input id="semaine" type="radio" name="recurrence" value="semaine" /><!--
+        --><label for="semaine">Chaque semaine</label><!--
+        --><input id="mois" type="radio" name="recurrence" value="mois" /><!--
+        --><label for="mois">Chaque mois</label><!--
+        --><input id="aucune" type="radio" name="recurrence" value="aucune" checked /><!--
+        --><label for="aucune">Aucune</label>
+      </div>
+    </section>
+
+    <div class="panel">
+
+  		<section class="dark-background">
+  			<p>Je connais la salle : <input type="text"> <input type="button" value="Réserver"></p>
+  		</section>
+
+      <section>
+          <p>Je cherche une salle : </p>
+          <p class="retrait">
+            <label>Capacité </label>
+
+            <div class="choice-bar dark">
+              <input id="size20" type="radio" name="roomCapacity" value="<20" checked="checked"/><!--
+              --><label for="size20">&lt;20</label><!--
+              --><input id="size50" type="radio" name="roomCapacity" value="20-50" /><label for="size50">20-50</label><!--
+              --><input id="size<100" type="radio" name="roomCapacity" value="50-100" /><!--
+              --><label for="size<100">50-100</label><!--
+              --><input id="size100" type="radio" name="roomCapacity" value=">100" /><!--
+              --><label for="size100">&gt;100</label>
+            </div>
+            places.
+          </p>
+          <p class="retrait">
+            <label>Type de salle</label>
+
+            <div class="choice-bar dark">
+              <input id="sizeInf" type="radio" name="roomType" value="Informatique" /><!--
+              --><label for="sizeInf">Informatique</label><!--
+
+              --><input id="sizeMus" type="radio" name="roomType" value="Musique" /><!--
+              --><label for="sizeMus">Musique</label><!--
+
+              --><input id="sizeRéu" type="radio" name="roomType" value="Réunion" /><!--
+              --><label for="sizeRéu">Réunion</label><!--
+
+              --><input id="sizeGrad" type="radio" name="roomType" value="Gradins" /><!--
+              --><label for="sizeGrad">Gradins</label><!--
+
+           	  --><input id="sizePlat" type="radio" name="roomType" value="Plate" checked = "checked"/><!--
+              --><label for="sizePlat">Plate</label>
+            </div>
+          </p>
+
+          <p class="retrait"><label>Equipement</label>
+
+          <div class="choice-bar dark">
+            <input id="vp" type="checkbox" value="Vidéoprojecteur"><label for="vp">Vidéoprojecteur</label><!--
+            --><input id="cam" type="checkbox" value="Caméra"><label for="cam">Caméra</label><!--
+            --><input id="enc" type="checkbox" value="Enceintes"><label for="enc">Enceintes</label>
+          </div>
+          </p>
+          <p><input type="button" value="Réserver"></p>
+      </section>
+
+    </div>
+
+	</form>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<title>Réservation de salle | Fédération</title>
+
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+	<script type="text/javascript" src="/static/pickadate.js-3.3.1/lib/picker.js"></script>
+	<script type="text/javascript" src="/static/pickadate.js-3.3.1/lib/picker.date.js"></script>
+	<script type="text/javascript" src="/static/pickadate.js-3.3.1/lib/picker.time.js"></script>
+	<script type="text/javascript" src="/static/pickadate.js-3.3.1/lib/translations/fr_FR.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/static/pickadate.js-3.3.1/lib/themes/classic.css">
+	<link rel="stylesheet" type="text/css" href="/static/pickadate.js-3.3.1/lib/themes/classic.date.css">
+	<link rel="stylesheet" type="text/css" href="/static/pickadate.js-3.3.1/lib/themes/classic.time.css">
+
+	<link href='http://fonts.googleapis.com/css?family=Lato:700,400,300,100' rel='stylesheet' type='text/css'>
+	{% assets "scss_all" %}
+	<link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+	{% endassets %}
+
+	<script type="text/javascript">
+		$(function(){
+			$('.datepicker').pickadate();
+			$('.timepicker').pickatime();
+		})
+	</script>
+</head>
+<body>
+
+	<header>
+		<h1>Fédération</h1>
+		<nav>
+			<ul>
+				<li>Vos réservations</li>
+				<li class="number">2 en cours</li>
+				<li class="number">1 acceptée</li>
+			</ul>
+		</nav>
+	</header>
+
+	<div id="content">
+	{% block content %}{% endblock %}
+	</div>
+</body>
+</html>

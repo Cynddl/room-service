@@ -1,0 +1,151 @@
+body, html {
+  margin: 0;
+}
+body {
+  background-color: #e31a33;
+  font-family: Lato, serif;
+}
+header {
+  background-color: #ffffff;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+header h1 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 115px;
+  float: left;
+}
+header nav {
+  float: right;
+  margin-top: 25px;
+}
+header h1, header nav, header nav ul li {
+  display: inline-block;
+}
+header nav ul li {
+  font-weight: lighter;
+}
+header nav ul li.number {
+  border: 2px solid #e31a33;
+  font-weight: normal;
+}
+header nav ul li + li {
+  margin-left: 10px;
+  padding: 10px;
+}
+header:after {
+  clear: both;
+  display: block;
+  content: "";
+}
+#content {
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 60px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 300;
+}
+#content section {
+  padding: 1em 0;
+}
+#content section + section {
+  padding-top: 0;
+}
+#content p.retrait {
+  padding-left: 25px;
+  display: inline-block;
+}
+#content p.retrait label:first-child {
+  margin-right: 10px;
+}
+#content form input {
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+}
+#content form input[type="text"] {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  padding-top: 10px;
+}
+#content form input[type="text"]::-webkit-input-placeholder {
+  color: #aaa;
+}
+#content form input[type="text"]:-moz-placeholder {
+  color: #aaa;
+}
+#content form input[type="text"]::-moz-placeholder {
+  color: #aaa;
+}
+#content form input[type="text"]:-ms-input-placeholder {
+  color: #aaa;
+}
+#content form input[type="button"] {
+  background: none;
+  border: 2px solid #ffffff;
+}
+#content form input[type="checkbox"], #content form
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  display: none;
+}
+#content form .choice-bar {
+  display: inline-block;
+}
+#content form .choice-bar input + label {
+  border: 1px solid #ffffff;
+  border-right-width: 0;
+  padding: 5px;
+  margin: none;
+}
+#content form .choice-bar label:last-child {
+  border-right-width: 1px;
+}
+#content form .choice-bar input:checked + label {
+  color: #e31a33;
+  background-color: #ffffff;
+}
+#content form .choice-bar label:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#content form .choice-bar.dark input + label {
+  border-color: #a71325;
+}
+#content form .choice-bar.dark input:checked + label {
+  color: #ffffff;
+  background-color: #e31a33;
+}
+#content select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #e31a33;
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid #ffffff;
+}
+#content .panel {
+  position: absolute;
+  top: 120px;
+  bottom: 0;
+  right: 0;
+  background-color: #ffffff;
+}
+#content .panel section {
+  padding: 2em;
+  margin: 0;
+  color: #444;
+}
+#content .panel section.dark-background {
+  background-color: #c5172c;
+  color: #ffffff;
+}
