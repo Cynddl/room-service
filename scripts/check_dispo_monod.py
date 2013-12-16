@@ -49,7 +49,8 @@ def is_room_free(area, room, start_time, stop_time):
     ONEDAY = datetime.timedelta(1)
     intervals = list()
     day = start_time
-    while day < stop_time:
+    last_day = datetime.datetime.combine(stop_time.date(), datetime.time.max)
+    while day < last_day:
         intervals.extend(occupancy_intervals(area, room, day))
         day += ONEDAY
     clashing = filter(lambda (t1, t2): start_time < t2 and t1 < stop_time, intervals)
