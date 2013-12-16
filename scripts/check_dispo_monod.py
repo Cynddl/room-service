@@ -55,3 +55,19 @@ def get_clashing_booking(area, room, start_time, stop_time):
         day += ONEDAY
     clashing = filter(lambda (t1, t2): start_time < t2 and t1 < stop_time, intervals)
     return clashing
+
+
+if __name__ == '__main__':
+    # Demo
+    room = 1
+    area = 1
+    start = datetime.datetime(2013, 12, 16, 13, 50)
+    stop = datetime.datetime.strptime("17/12/2013 10:30", "%d/%m/%Y %H:%M")
+    print("Querying room {} in area {} from {} to {}...".format(room, area, start, stop))
+    clashing = get_clashing_booking(area, room, start, stop)
+    for booking in clashing:
+        print("Room already booked from {} to {}".format(booking[0], booking[1]))
+    if clashing:
+        print("Sorry, the room is not available.")
+    else:
+        print("The room is free!")
