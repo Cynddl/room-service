@@ -42,10 +42,10 @@ def occupancy_intervals(area, room, date):
     return intervals
 
 
-def is_room_free(area, room, start_time, stop_time):
-    """Checks if a room in Monod is free for the specified time
-    interval. Arguments are datetime objects. The time interval is allowed
-    to span multiple days."""
+def get_clashing_booking(area, room, start_time, stop_time):
+    """Checks if a room in Monod is free for the specified time interval, by
+    returning a list of booking clashing with it. Arguments are datetime
+    objects. The time interval is allowed to span multiple days."""
     ONEDAY = datetime.timedelta(1)
     intervals = list()
     day = start_time
@@ -54,4 +54,4 @@ def is_room_free(area, room, start_time, stop_time):
         intervals.extend(occupancy_intervals(area, room, day))
         day += ONEDAY
     clashing = filter(lambda (t1, t2): start_time < t2 and t1 < stop_time, intervals)
-    return (not clashing)
+    return clashing
