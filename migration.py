@@ -2,8 +2,11 @@
 
 import pandas
 
-from app import *
+from room_service import *
 
+# Create tables
+auth.User.create_table(fail_silently=True)
+Room.create_table(fail_silently=True)
 
 auth.User.create_table(fail_silently=True)  # make sure table created.
 admin = auth.User(username='admin', email='', admin=True, active=True)
