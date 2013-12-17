@@ -63,12 +63,12 @@ header {
 			padding: 10px;
 		}
 	}
-}
 
-header:after {
-	clear: both;
-	display: block;
-	content: "";
+	&:after {
+		clear: both;
+		display: block;
+		content: "";
+	}
 }
 
 #content {
@@ -116,9 +116,14 @@ header:after {
 
 		}
 
-		input[type="button"]{
+		input[type="button"], input[type="submit"] {
 			background: none;
 			border: 2px solid white;
+
+			&.dark {
+				border-color: $dark-red;
+				color: $dark-red;
+			}
 		}
 
 		input[type="radio"], input[type="checkbox"] {
@@ -150,21 +155,20 @@ header:after {
 			label:hover {
 				background-color: rgba(0, 0, 0, 0.2);
 			}
-		}
 
-		.choice-bar.dark {
-			input + label {
+			&.dark {
+				input + label {
 				border-color: $dark-red;
 			}
 
-			input:checked + label {
-				color: $light-text;
-				background-color: $red;
+				input:checked + label {
+					color: $light-text;
+					background-color: $red;
+				}
 			}
-
 		}
-
 	}
+
 	select {
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -189,11 +193,27 @@ header:after {
 			padding: 2em;
 			margin: 0;
 			color: #444;
-		}
 
-		section.dark-background {
-			background-color: #c5172c;
-			color: white;
+			&.dark-background {
+				background-color: #c5172c;
+				color: white;
+			}
 		}
 	}
+}
+
+
+// Rooms list
+// ----------------------------------------
+
+.room {
+	background-color: $light-text;
+	color: $dark-red;
+
+	padding: 10px;
+	margin: 5px 0;
+	width: 200px;
+	display: block;
+
+	border-radius: 4px;
 }

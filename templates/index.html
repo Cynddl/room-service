@@ -5,7 +5,7 @@
 
 	<form name="reservation" method="POST" action="{{url_for('search')}}">
 
-    <section>
+    <section id="left-content">
       <p>Je souhaite réserver une salle le <input type="text" name="date" class="datepicker" required> de <input class="timepicker" type="text" name="time_first" required> à <input class="timepicker" type="text" name="time_last" required></p>
       <p>sur le site <select name="site"><option value="descartes">Descartes</option><option value="monod">Monod</option></select>, au nom de <input type="text" placeholder="association/individu" required> pour<input type="text" placeholder="une réunion, un club…" required>.
     </p>
@@ -23,10 +23,13 @@
       </div>
     </section>
 
+    <section id="room-list">
+    </section>
+
     <div class="panel">
 
   		<section class="dark-background">
-  			<p>Je connais la salle : <input type="text" name="room_name"> <input type="button" value="Réserver"></p>
+  			<p>Je connais la salle : <input type="text" name="room_name"> <input type="submit" value="Réserver"></p>
   		</section>
 
       <section>
@@ -75,7 +78,7 @@
               --><input id="enc" name="equipement" type="checkbox" value="speaker"><label for="enc">Enceintes</label>
             </div>
           </p>
-          <p><input type="button" value="Réserver"></p>
+          <p><input type="submit" class="dark" value="Réserver"></p>
       </section>
 
     </div>

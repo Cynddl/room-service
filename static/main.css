@@ -85,9 +85,15 @@ header:after {
 #content form input[type="text"]:-ms-input-placeholder {
   color: #aaa;
 }
-#content form input[type="button"] {
+#content form input[type="button"], #content form input[type="submit"]
+{
   background: none;
   border: 2px solid #ffffff;
+}
+#content form input[type="button"].dark, #content form
+input[type="submit"].dark {
+  border-color: #a71325;
+  color: #a71325;
 }
 #content form input[type="checkbox"], #content form
 input[type="radio"] {
@@ -148,4 +154,13 @@ input[type="radio"] {
 #content .panel section.dark-background {
   background-color: #c5172c;
   color: #ffffff;
+}
+.room {
+  background-color: #ffffff;
+  color: #a71325;
+  padding: 10px;
+  margin: 5px 0;
+  width: 200px;
+  display: block;
+  border-radius: 4px;
 }

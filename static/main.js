@@ -1,5 +1,4 @@
 $(function(){
-
 	// Date and time inputs
 	$('.datepicker').pickadate({
 		formatSubmit: 'yyyy-mm-dd',
@@ -12,18 +11,13 @@ $(function(){
 	$('form[name=reservation]').submit(function(ev) {
 		ev.preventDefault();
 
-		var data = $(this).serializeArray();
+		$.post($(this).attr('action'), $(this).serializeArray(), function(json) {
+			$('#room-list').empty();
+			$('#room-list').append('<h2>Salles disponibles</h2>');
 
-		// jQuery.each( data, function( i, field ) {
-		// 	if (field['name'] == 'date') {
-		// 		field['value'] = $('input[name="date"]').pickadate('picker').get('select', 'yyyy-mm-dd');
-		// 		console.log(field);
-		// 	}
-		// });
-		console.log(data);
-
-		$.post($(this).attr('action'), data, function(json) {
-			console.log(json);
+			$.each(json.rooms, function(id, room){
+				$('#room-list').append('<div class="room">' + room[1] + '</div> ');
+			});
 		}, 'json');
 	});
 });

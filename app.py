@@ -95,7 +95,7 @@ def search():
     type_filter = Room.type == roomType
 
     rooms = Room.select().where((Room.site == site) & capacity_filter & type_filter & equipement_filter)
-    return json.dumps({'status': 'success', 'rooms': len(list(rooms))})
+    return json.dumps({'status': 'success', 'rooms': [(r.id, r.name) for r in rooms]})
 
 if __name__ == '__main__':
     auth.User.create_table(fail_silently=True)
