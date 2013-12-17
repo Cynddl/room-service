@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import pandas
 
 from app import *
@@ -15,7 +17,7 @@ for _, row in df.iterrows():
     room = Room()
     room.type = row['type']
     room.name = row['Nom de salle']
-    room.site = row['site']
+    room.site = row['site'].lower()
     room.capacity = row['capacité exacte']
     if not pandas.isnull(row['vidéoprojecteur']):
         room.projector = row['vidéoprojecteur']

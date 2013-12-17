@@ -3,11 +3,11 @@
 {% block content %}
 	<h2>Réservation de salle à l’ENS de Lyon</h2>
 
-	<form>
+	<form name="reservation" method="POST" action="{{url_for('search')}}">
 
     <section>
-      <p>Je souhaite réserver une salle le <input type="text" class="datepicker" required> de <input class="timepicker" type="text" required> à <input class="timepicker" type="text" required></p>
-      <p>sur le site <select><option value="descartes">Descartes</option><option value="monod">Monod</option></select>, au nom de <input type="text" placeholder="association/individu" required> pour<input type="text" placeholder="une réunion, un club…" required>.
+      <p>Je souhaite réserver une salle le <input type="text" name="date" class="datepicker" required> de <input class="timepicker" type="text" name="time_first" required> à <input class="timepicker" type="text" name="time_last" required></p>
+      <p>sur le site <select name="site"><option value="descartes">Descartes</option><option value="monod">Monod</option></select>, au nom de <input type="text" placeholder="association/individu" required> pour<input type="text" placeholder="une réunion, un club…" required>.
     </p>
     </section>
 
@@ -26,7 +26,7 @@
     <div class="panel">
 
   		<section class="dark-background">
-  			<p>Je connais la salle : <input type="text"> <input type="button" value="Réserver"></p>
+  			<p>Je connais la salle : <input type="text" name="room_name"> <input type="button" value="Réserver"></p>
   		</section>
 
       <section>
@@ -37,7 +37,7 @@
             <div class="choice-bar dark">
               <input id="size20" type="radio" name="roomCapacity" value="<20" checked="checked"/><!--
               --><label for="size20">&lt;20</label><!--
-              --><input id="size50" type="radio" name="roomCapacity" value="20-50" /><label for="size50">20-50</label><!--
+              --><input id="size<50" type="radio" name="roomCapacity" value="20-50" /><label for="size<50">20-50</label><!--
               --><input id="size<100" type="radio" name="roomCapacity" value="50-100" /><!--
               --><label for="size<100">50-100</label><!--
               --><input id="size100" type="radio" name="roomCapacity" value=">100" /><!--
@@ -66,18 +66,21 @@
             </div>
           </p>
 
-          <p class="retrait"><label>Equipement</label>
+          <p class="retrait">
+            <label>Equipement</label>
 
-          <div class="choice-bar dark">
-            <input id="vp" type="checkbox" value="Vidéoprojecteur"><label for="vp">Vidéoprojecteur</label><!--
-            --><input id="cam" type="checkbox" value="Caméra"><label for="cam">Caméra</label><!--
-            --><input id="enc" type="checkbox" value="Enceintes"><label for="enc">Enceintes</label>
-          </div>
+            <div class="choice-bar dark">
+              <input id="vp" name="equipement" type="checkbox" value="projector"><label for="vp">Vidéoprojecteur</label><!--
+              --><input id="cam" name="equipement" type="checkbox" value="camera"><label for="cam">Caméra</label><!--
+              --><input id="enc" name="equipement" type="checkbox" value="speaker"><label for="enc">Enceintes</label>
+            </div>
           </p>
           <p><input type="button" value="Réserver"></p>
       </section>
 
     </div>
+
+    </form>
 
 	</form>
 
