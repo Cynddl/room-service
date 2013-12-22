@@ -207,7 +207,6 @@ header {
 // ----------------------------------------
 
 .room {
-	background-color: $light-text;
 	color: $dark-red;
 
 	padding: 10px;
@@ -216,4 +215,9 @@ header {
 	display: block;
 
 	border-radius: 4px;
+	background-color: $light-text;
+
+	&.not-available {
+		background-color: rgba($light-text, 0.5)
+	}
 }

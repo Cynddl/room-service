@@ -1,20 +1,13 @@
 from datetime import datetime, timedelta, time
 from dateutil.parser import parse
-import urllib
-import json
+import requests
 
-
-def fetch_rooms():
-    """Save the list of rooms and their IDs in the database."""
-    response = urllib.urlopen('http://emptps-lsh.ens-lyon.fr/php/ajax/SalGrid.php?rows=200')
-    data = json.load(response)
-    rooms = [(int(row['id']), row['cell'][0], row['cell'][1]) for row in data['rows']]
-    with open('rooms.json', 'wb') as f:
-        json.dump(rooms, f)
+_EMPTPS_URL = 'http://emptps-lsh.ens-lyon.fr/php/ajax/OccList.php'
+_EMPTPS_ARGS = '?start={}&end={}&sel=Sal%3A+{}'
 
 
 def occupancy_intervals(room_id, date_start, date_last=None):
-    """Returns the list of intervals at which the room is occupied"""
+    """Returns the list of intervals at which the room is occupied."""
     ONEDAY = timedelta(days=1)
 
     if not date_last:
@@ -23,9 +16,9 @@ def occupancy_intervals(room_id, date_start, date_last=None):
     date_start_str = date_start.strftime('%Y-%m-%d')
     date_last_str = date_last.strftime('%Y-%m-%d')
 
-    url = 'http://emptps-lsh.ens-lyon.fr/php/ajax/OccList.php?start=' + date_start_str + '&end=' + date_last_str + '&sel=Sal%3A+' + str(room_id)
-    response = urllib.urlopen(url)
-    data = json.load(response)
+    url = _EMPTPS_URL + _EMPTPS_ARGS.format(date_start_str, date_last_str, room_id)
+    response = requests.get(url)
+    data = response.json()
 
     return [(parse(cell['start']).replace(tzinfo=None), parse(cell['end']).replace(tzinfo=None)) for cell in data]
 
@@ -39,8 +32,3 @@ def get_clashing_booking(room_id, start_time, stop_time):
     intervals = occupancy_intervals(room_id, start_time, last_day)
 
     return filter(lambda (t1, t2): start_time < t2 and t1 < stop_time, intervals)
-
-
-if __name__ == '__main__':
-    print("Fetching the list of rooms...")
-    fetch_rooms()

@@ -2,6 +2,10 @@ from flask import render_template, json, request
 from room_service import app
 from room_service.models import Room
 
+from datetime import datetime
+
+from room_service.availability import check_availability
+
 
 @app.route('/')
 def index(name=None):
@@ -10,9 +14,12 @@ def index(name=None):
 
 @app.route('/search', methods=['POST'])
 def search():
-    # date = request.form.get('date_raw')
-    # time_first = request.form.get('time_first')
-    # time_last = request.form.get('time_last')
+    date = request.form.get('date_raw')
+    time_first = request.form.get('time_first')
+    time_last = request.form.get('time_last')
+    date_first = datetime.strptime(date + ' ' + time_first, "%Y-%m-%d %H:%M")
+    date_last = datetime.strptime(date + ' ' + time_last, "%Y-%m-%d %H:%M")
+
     roomCapacity = request.form.get('roomCapacity')
     roomType = request.form.get('roomType')
     site = request.form.get('site')
@@ -40,4 +47,8 @@ def search():
     type_filter = Room.type == roomType
 
     rooms = Room.select().where((Room.site == site) & capacity_filter & type_filter & equipement_filter)
-    return json.dumps({'status': 'success', 'rooms': [(r.id, r.name) for r in rooms]})
+
+    rooms_list = [(r.id, r.name, check_availability(r, date_first, date_last)) for r in rooms]
+    rooms_list = sorted(rooms_list, key=lambda r_tuple: r_tuple[2], reverse=True)
+
+    return json.dumps({'status': 'success', 'rooms': rooms_list})

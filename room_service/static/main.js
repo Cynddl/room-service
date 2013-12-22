@@ -16,7 +16,8 @@ $(function(){
 			$('#room-list').append('<h2>Salles disponibles</h2>');
 
 			$.each(json.rooms, function(id, room){
-				$('#room-list').append('<div class="room">' + room[1] + '</div> ');
+				var div_class = room[2] ? '' : ' not-available';
+				$('#room-list').append('<div class="room' + div_class + '">' + room[1] + '</div> ');
 			});
 		}, 'json');
 	});

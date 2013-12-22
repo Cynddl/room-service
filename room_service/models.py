@@ -15,6 +15,10 @@ class Room(db.Model):
     projector = IntegerField(null=True)
     speaker = IntegerField(null=True)
 
+    api = CharField(null=True)
+    room_code = IntegerField(null=True)
+    area_code = IntegerField(null=True)
+
     def __unicode__(self):
         return '%s (%s)' % (self.name, self.site)
 
