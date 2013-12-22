@@ -5,7 +5,7 @@ from check_emptps import get_clashing_booking as emptps_clash
 def get_clashing_booking(room, start_time, stop_time):
     if room.api == 'mrbs' or room.api == 'mrbs-enseignement':
         return mrbs_clash(room.api, room.area_code, room.room_code, start_time, stop_time)
-    elif room.api == 'emptps':
+    elif room.api == 'emptps-lsh':
         return emptps_clash(room.room_code, start_time, stop_time)
     else:
         return []
