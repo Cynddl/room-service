@@ -20,21 +20,20 @@ def search():
     date_first = datetime.strptime(date + ' ' + time_first, "%Y-%m-%d %H:%M")
     date_last = datetime.strptime(date + ' ' + time_last, "%Y-%m-%d %H:%M")
 
-    roomCapacity = request.form.get('roomCapacity')
+    roomCapacity = request.form.getlist('roomCapacity')
     roomType = request.form.get('roomType')
     site = request.form.get('site')
     equipement = request.form.getlist('equipement')
 
-    if roomCapacity == '<20':
-        capacity_filter = Room.capacity < 20
-    elif roomCapacity == '20-50':
-        capacity_filter = (Room.capacity >= 20) & (Room.capacity <= 50)
-    elif roomCapacity == '50-100':
-        capacity_filter = (Room.capacity >= 50) & (Room.capacity <= 100)
-    elif roomCapacity == '>100':
-        capacity_filter = Room.capacity > 100
-    else:
-        capacity_filter = True
+    capacity_filter = False
+    if '<20' in roomCapacity:
+        capacity_filter |= (Room.capacity < 20)
+    if '20-50' in roomCapacity:
+        capacity_filter |= (Room.capacity >= 20) & (Room.capacity <= 50)
+    if '50-100' in roomCapacity:
+        capacity_filter |= (Room.capacity >= 50) & (Room.capacity <= 100)
+    if '>100' in roomCapacity:
+        capacity_filter |= Room.capacity > 100
 
     equipement_filter = True
     if 'projector' in equipement:
