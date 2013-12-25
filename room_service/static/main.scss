@@ -73,12 +73,12 @@ header {
 
 #content {
 	margin-left: 80px;
-	margin-right: 80px;
 	margin-top: 60px;
 
 	color: white;
 	font-size: 14px;
 	font-weight: 300;
+
 
 	section {
 		padding: 1em 0;
@@ -86,6 +86,10 @@ header {
 
 	section + section {
 		padding-top: 0;
+	}
+
+	.pull-left {
+		margin-right: 500px;
 	}
 
 	p.retrait {

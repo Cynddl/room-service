@@ -43,7 +43,6 @@ header:after {
 }
 #content {
   margin-left: 80px;
-  margin-right: 80px;
   margin-top: 60px;
   color: #ffffff;
   font-size: 14px;
@@ -54,6 +53,9 @@ header:after {
 }
 #content section + section {
   padding-top: 0;
+}
+#content .pull-left {
+  margin-right: 500px;
 }
 #content p.retrait {
   padding-left: 25px;

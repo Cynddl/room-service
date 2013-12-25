@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h2>Réservation de salle à l’ENS de Lyon</h2>
 
 	<form name="reservation" method="POST" action="{{url_for('search')}}">
 
-    <section id="left-content">
+    <h2 class="pull-left">Réservation de salle à l’ENS de Lyon</h2>
+
+
+    <section id="left-content" class="pull-left">
       <p>Je souhaite réserver une salle le <input type="text" name="date" class="datepicker" required> de <input class="timepicker" type="text" name="time_first" required> à <input class="timepicker" type="text" name="time_last" required></p>
       <p>sur le site <select name="site"><option value="descartes">Descartes</option><option value="monod">Monod</option></select>, au nom de <input type="text" placeholder="association/individu" required> pour<input type="text" placeholder="une réunion, un club…" required>.
     </p>
     </section>
 
-    <section>
+    <section class="pull-left">
       <label>Récurrence</label>
       <div class="choice-bar">
         <input id="semaine" type="radio" name="recurrence" value="semaine" /><!--
@@ -23,7 +25,7 @@
       </div>
     </section>
 
-    <section id="room-list">
+    <section id="room-list" class="pull-left">
     </section>
 
     <div class="panel">
