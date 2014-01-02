@@ -1,5 +1,5 @@
 from flask_peewee.admin import ModelAdmin
-from peewee import *
+from peewee import CharField, IntegerField, TextField
 from room_service import db
 
 

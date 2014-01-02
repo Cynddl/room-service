@@ -2,7 +2,8 @@
 
 import pandas
 
-from room_service import *
+from room_service import auth
+from room_service.models import Room
 
 # Drop tables
 Room.drop_table()

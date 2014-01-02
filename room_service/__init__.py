@@ -2,7 +2,6 @@ from flask import Flask
 from flask_peewee.db import Database
 from flask_peewee.auth import Auth
 from flask_peewee.admin import Admin
-from peewee import *
 
 from flask.ext.assets import Environment, Bundle
 
